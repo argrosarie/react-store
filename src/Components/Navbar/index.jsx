@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 const Navbar = () => {
+  const activeStyle = "underline underline-offset-4";
+
   const categories = [
-    { to: "/", text: "Brand" },
+    { to: "/", text: "Home" },
     { to: "/all", text: "All" },
     { to: "/clothes", text: "Clothes" },
     { to: "/furniture", text: "Furniture" },
@@ -14,19 +16,29 @@ const Navbar = () => {
     { to: "/sign-in", text: "Sign In" },
   ];
   return (
-    <nav>
-      <ul>
+    <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light">
+      <ul className="flex items-center gap-3">
         {categories.map((category, index) => (
-          <li key={index}>
-            <NavLink to={category.to}>{category.text}</NavLink>
+          <li key={index} className="first:font-semibold first:text-lg">
+            <NavLink
+              to={category.to}
+              className={({ isActive }) => ` ${isActive ? activeStyle : ""}`}
+            >
+              {category.text}
+            </NavLink>
           </li>
         ))}
       </ul>
-      <ul>
-        <li>rosario@testing.com</li>
+      <ul className="flex items-center gap-3">
+        <li className="text-black/60">rosario@testing.com</li>
         {routes.map((route, index) => (
           <li key={index}>
-            <NavLink to={route.to}>{route.text}</NavLink>
+            <NavLink
+              to={route.to}
+              className={({ isActive }) => ` ${isActive ? activeStyle : ""}`}
+            >
+              {route.text}
+            </NavLink>
           </li>
         ))}
         <li>🛒2</li>
