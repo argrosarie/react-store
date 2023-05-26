@@ -1,35 +1,34 @@
 import { NavLink } from "react-router-dom";
 const Navbar = () => {
+  const categories = [
+    { to: "/", text: "Brand" },
+    { to: "/all", text: "All" },
+    { to: "/clothes", text: "Clothes" },
+    { to: "/furniture", text: "Furniture" },
+    { to: "/toys", text: "Toys" },
+  ];
+
+  const routes = [
+    { to: "/my-orders", text: "My Orders" },
+    { to: "/my-account", text: "My Account" },
+    { to: "/sign-in", text: "Sign In" },
+  ];
   return (
     <nav>
       <ul>
-        <li>
-          <NavLink to="/">Brand</NavLink>
-        </li>
-        <li>
-          <NavLink to="/all">All</NavLink>
-        </li>
-        <li>
-          <NavLink to="/clothes">Clothes</NavLink>
-        </li>
-        <li>
-          <NavLink to="/furniture">Furniture</NavLink>
-        </li>
-        <li>
-          <NavLink to="/toys">Toys</NavLink>
-        </li>
+        {categories.map((category, index) => (
+          <li key={index}>
+            <NavLink to={category.to}>{category.text}</NavLink>
+          </li>
+        ))}
       </ul>
       <ul>
         <li>rosario@testing.com</li>
-        <li>
-          <NavLink to="/my-orders">My Orders</NavLink>
-        </li>
-        <li>
-          <NavLink to="/my-account">My Account</NavLink>
-        </li>
-        <li>
-          <NavLink to="/sign-in">Sign In</NavLink>
-        </li>
+        {routes.map((route, index) => (
+          <li key={index}>
+            <NavLink to={route.to}>{route.text}</NavLink>
+          </li>
+        ))}
         <li>🛒2</li>
       </ul>
     </nav>
